@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidaamu Afoo AI - Live Demo</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #000000; 
+            color: #ffffff; 
+            text-align: center; 
+            padding: 40px 20px; 
+            margin: 0; 
+        }
+        h1 { 
+            color: #ffffff; 
+            margin-bottom: 10px; 
+            font-size: 28px;
+        }
+        p { 
+            color: #a0a0a0; 
+            max-width: 650px; 
+            margin: 0 auto 30px auto; 
+            line-height: 1.6; 
+            font-size: 16px;
+        }
+        .video-container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 20px rgba(0,212,255,0.2); 
+            background: #111;
+            border: 1px solid #333;
+        }
+        video { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+        }
+        .links { 
+            margin-top: 40px; 
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        a { 
+            color: #00d4ff; 
+            text-decoration: none; 
+            font-weight: 600; 
+            padding: 12px 24px;
+            border: 1px solid #00d4ff;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        a:hover { 
+            background-color: #00d4ff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌍 Sidaamu Afoo AI</h1>
+    <p>The first custom tokenizer and monolingual language model for Sidaamu Afoo (Cushitic, ~8M speakers). Achieved Loss 2.77 and zero foreign-script output.</p>
+    
+    <div class="video-container">
+        <!-- This plays your uploaded video -->
+        <video controls autoplay muted>
+            <source src="demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="links">
+        <a href="https://huggingface.co/Shime1000/sid-af-ai" target="_blank">🤗 Download Model on Hugging Face</a>
+        <a href="https://github.com/Shime1000me/sid_af_ai" target="_blank">💻 View Code on GitHub</a>
+    </div>
+</body>
+</html>
