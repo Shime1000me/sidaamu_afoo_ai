@@ -3,79 +3,273 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidaamu Afoo AI - Live Demo</title>
+    <title>Sidaamu Afoo AI - INSA Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #212529;
+            --text-muted: #6c757d;
+            --primary: #0056b3; /* Professional academic blue */
+            --border: #dee2e6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            background-color: #000000; 
-            color: #ffffff; 
-            text-align: center; 
-            padding: 40px 20px; 
-            margin: 0; 
-        }
-        h1 { 
-            color: #ffffff; 
-            margin-bottom: 10px; 
-            font-size: 28px;
-        }
-        p { 
-            color: #a0a0a0; 
-            max-width: 650px; 
-            margin: 0 auto 30px auto; 
+            font-family: 'Inter', sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
             line-height: 1.6; 
-            font-size: 16px;
         }
-        .video-container { 
-            max-width: 800px; 
-            margin: 0 auto; 
-            border-radius: 12px; 
-            overflow: hidden; 
-            box-shadow: 0 4px 20px rgba(0,212,255,0.2); 
-            background: #111;
-            border: 1px solid #333;
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+        /* HEADER */
+        header {
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border);
+            padding: 30px 0;
+            margin-bottom: 40px;
         }
-        video { 
-            width: 100%; 
-            height: auto; 
-            display: block; 
+        header h1 {
+            font-size: 1.8rem;
+            color: var(--text);
+            margin-bottom: 10px;
         }
-        .links { 
-            margin-top: 40px; 
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
         }
-        a { 
-            color: #00d4ff; 
-            text-decoration: none; 
-            font-weight: 600; 
-            padding: 12px 24px;
-            border: 1px solid #00d4ff;
+
+        /* SECTIONS */
+        section { margin-bottom: 50px; }
+        h2 {
+            font-size: 1.3rem;
+            color: var(--text);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* SUMMARY STATS */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .stat-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
             border-radius: 8px;
-            transition: all 0.3s;
+            text-align: center;
         }
-        a:hover { 
-            background-color: #00d4ff;
-            color: #000;
+        .stat-val {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* COMPONENTS */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .card h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+        .card a {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9rem;
+        }
+        th {
+            background: #e9ecef;
+            font-weight: 600;
+        }
+        .highlight { font-weight: 700; color: var(--primary); }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
-    <h1>🌍 Sidaamu Afoo AI</h1>
-    <p>The first custom tokenizer and monolingual language model for Sidaamu Afoo (Cushitic, ~8M speakers). Achieved Loss 2.77 and zero foreign-script output.</p>
-    
-    <div class="video-container">
-        <!-- This plays your uploaded video -->
-        <video controls autoplay muted>
-            <source src="demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <h1>Sidaamu Afoo AI Ecosystem</h1>
+            <p>INSA Summer Camp — Final Project Submission</p>
+            <p style="margin-top: 5px; font-size: 0.9rem;"><strong>Researcher:</strong> Shimelis Hatiso</p>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- PROJECT OVERVIEW -->
+        <section>
+            <h2>Project Overview</h2>
+            <p style="margin-bottom: 20px;">
+                This project presents the first open-source, multi-modal AI ecosystem for Sidaamu Afoo, a Cushitic language spoken by approximately 10 million people in Ethiopia. The system includes a custom BPE tokenizer, a compressed translation model (NLLB-200), automatic speech recognition (ASR), and text-to-speech (TTS), all deployed on free-tier infrastructure.
+            </p>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="stat-val">155,114</span>
+                    <span class="stat-label">Training Lines</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-val">8,000</span>
+                    <span class="stat-label">Custom BPE Vocab</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-val">600 MB</span>
+                    <span class="stat-label">Compressed Model Size</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-val">4</span>
+                    <span class="stat-label">Deployed Tools</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVALUATION RESULTS -->
+        <section>
+            <h2>Domain Bias Evaluation</h2>
+            <p style="margin-bottom: 20px; font-size: 0.95rem;">
+                We evaluated the CTranslate2 INT8 translation model on two distinct native test sets to measure domain performance.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Set</th>
+                        <th>Size</th>
+                        <th>BLEU</th>
+                        <th>chrF++</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Formal / Biblical</td>
+                        <td>26 sentences</td>
+                        <td class="highlight">16.13</td>
+                        <td class="highlight">58.55</td>
+                    </tr>
+                    <tr>
+                        <td>Conversational / Everyday</td>
+                        <td>300 sentences</td>
+                        <td class="highlight">2.43</td>
+                        <td class="highlight">23.84</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-muted);">
+                <em>Finding:</em> The large performance drop on conversational text indicates a significant domain bias in the original Anley-Dev LoRA training data. This motivates our Human-in-the-Loop data collection pipeline.
+            </p>
+        </section>
+
+        <!-- DEPLOYED TOOLS -->
+        <section>
+            <h2>Deployed Tools & Code</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Speech-to-Text (ASR)</h3>
+                    <p>Model: badrex/Ethio-ASR-sidaama</p>
+                    <a href="https://t.me/SidaamaAIbot" target="_blank">Test on Telegram →</a>
+                </div>
+                <div class="card">
+                    <h3>Text-to-Speech (TTS)</h3>
+                    <p>Model: facebook/mms-tts-sid</p>
+                    <a href="https://t.me/SidaamaAIbot" target="_blank">Test on Telegram →</a>
+                </div>
+                <div class="card">
+                    <h3>Translation (NLLB)</h3>
+                    <p>Model: NLLB-200 (INT8 CTranslate2)</p>
+                    <a href="https://t.me/sidaamatranslationAIbot" target="_blank">Test on Telegram →</a>
+                </div>
+                <div class="card">
+                    <h3>Video Captioning</h3>
+                    <p>Tool: Hugging Face Space</p>
+                    <a href="https://huggingface.co/spaces/Shime1000me/Hayyo-Sidaamu-Afoo-AI" target="_blank">Test on Hugging Face →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- OPEN SOURCE -->
+        <section>
+            <h2>Open Source Artifacts</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Research Paper</h3>
+                    <p>Read the full methodology and findings.</p>
+                    <a href="https://arxiv.org/abs/YOUR_ARXIV_ID" target="_blank">Read on arXiv →</a>
+                </div>
+                <div class="card">
+                    <h3>Hugging Face Model</h3>
+                    <p>Download the custom tokenizer and GPT-2 model.</p>
+                    <a href="https://huggingface.co/Shime1000/sid-af-ai" target="_blank">View Model →</a>
+                </div>
+                <div class="card">
+                    <h3>GitHub Repository</h3>
+                    <p>Full source code for the pipeline.</p>
+                    <a href="https://github.com/Shime1000me/sid_af_ai" target="_blank">View Code →</a>
+                </div>
+            </div>
+        </section>
+
     </div>
 
-    <div class="links">
-        <a href="https://huggingface.co/Shime1000/sid-af-ai" target="_blank">🤗 Download Model on Hugging Face</a>
-        <a href="https://github.com/Shime1000me/sid_af_ai" target="_blank">💻 View Code on GitHub</a>
-    </div>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>Submitted by Shimelis Hatiso | INSA Summer Camp Project</p>
+        </div>
+    </footer>
+
 </body>
 </html>
